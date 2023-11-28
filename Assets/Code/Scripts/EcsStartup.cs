@@ -21,6 +21,7 @@ namespace TicTacToe
             Leopotam.Ecs.UnityIntegration.EcsSystemsObserver.Create (_systems);
 #endif
             var gameState = new GameState();
+            SceneData.UI.GameHUD.SetTurn(gameState.CurrentType);
             
             _systems
                 .Add(new InitializeFieldSystem())
@@ -29,8 +30,12 @@ namespace TicTacToe
                 .Add(new ControlSystem())
                 .Add(new AnalyzeClickSystem())
                 .Add(new CreateTakenViewSystem())
+                .Add(new CheckWinSystem())
+                .Add(new WinSystem())
+                .Add(new DrawSystem())
                 
                 .OneFrame<UpdateCameraEvent> ()
+                .OneFrame<CheckWinEvent>()
                 .OneFrame<Clicked>()
                 
                 .Inject (Configuration)

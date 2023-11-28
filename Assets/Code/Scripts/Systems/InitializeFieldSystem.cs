@@ -6,6 +6,7 @@ namespace TicTacToe {
         
         private Configuration _configuration;
         private EcsWorld _world;
+        private GameState _gameState;
         
         public void Init () 
         {
@@ -15,7 +16,10 @@ namespace TicTacToe {
                 {
                     var cellEntity = _world.NewEntity();
                     cellEntity.Get<Cell>();
+                    var position = new Vector2Int(x, y);
                     cellEntity.Get<Position>().value = new Vector2Int(x,y);
+
+                    _gameState.Cells[position] = cellEntity;
                 }
             }
             _world.NewEntity().Get<UpdateCameraEvent>();

@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace TicTacToe
 {
-    internal struct Position
+    public struct Position
     {
         public Vector2Int value;
     }

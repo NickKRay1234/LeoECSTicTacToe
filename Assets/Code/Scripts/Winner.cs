@@ -1,7 +1,6 @@
 namespace TicTacToe
 {
-    public struct Cell
+    internal struct Winner
     {
-        
     }
 }
